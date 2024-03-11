@@ -1,0 +1,86 @@
+MTUOC: /MTUOC
+
+VERBOSE: True
+LOG_FILE: process.log
+DELETE_TEMP: True
+
+corpora: paracrawl-uniq-clean-nova-detok-spa-cat.txt paracrawl-uniq-clean-detok-spa-glg.txt NLLB-recored075075075-detok-spa-ast.txt
+ 
+to_tags: <2cat> <2glg> <2ast>
+L1codes3: spa spa spa
+L1codes2: es es es
+L2codes3: cat glg ast
+L2codes2: ca gl ast
+valsizes: 1000 1000 1000
+evalsizes: 1000 1000 1000
+
+L1_DICTS: /MTUOC/spa.dict /MTUOC/spa.dict /MTUOC/spa.dict
+L2_DICTS: /MTUOC/cat.dict /MTUOC/glg.dict /MTUOC/ast.dict
+
+L1_TOKENIZERS: MTUOC_tokenizer_spa.py MTUOC_tokenizer_spa.py MTUOC_tokenizer_spa.py
+TOKENIZE_L1: False False False
+L2_TOKENIZERS: MTUOC_tokenizer_cat.py MTUOC_tokenizer_glg.py MTUOC_tokenizer_ast.py
+TOKENIZE_L2: False False False
+
+TRAIN_L1_TRUECASER: True True True 
+TRUECASE_L1: False False False
+L1_TC_MODELS: auto auto auto
+
+TRAIN_L2_TRUECASER: True True True
+TRUECASE_L2: False False False
+L2_TC_MODELS: auto auto auto
+
+REPLACE_EMAILS: True
+EMAIL_CODE: "@EMAIL@"
+REPLACE_URLS: True
+URL_CODE: "@URL@"
+
+CLEAN: False
+MIN_TOK: 1
+MAX_TOK: 80
+
+MIN_CHAR: 1
+MAX_CHAR: 1000
+
+#SENTENCE PIECE
+TRAIN_SENTENCEPIECE: True
+
+SAMPLE_SIZE: 500000
+bos: <s>
+#<s> or None
+eos: </s>
+#</s> or None
+JOIN_LANGUAGES: True
+SPLIT_DIGITS: True
+VOCABULARY_THRESHOLD: 5
+
+CONTROL_SYMBOLS: ""
+USER_DEFINED_SYMBOLS: "@EMAIL@,@URL@,<tag0>,<tag1>,<tag2>,<tag3>,<tag4>,<tag5>,<tag6>,<tag7>,<tag8>,<tag9>,<tag10>,</tag0>,</tag1>,</tag2>,</tag3>,</tag4>,</tag5>,</tag6>,</tag7>,</tag8>,</tag9>,</tag10>,<tag0/>,<tag1/>,<tag2/>,<tag3/>,<tag4/>,<tag5/>,<tag6/>,<tag7/>,<tag8/>,<tag9/>,<tag10/>,"
+SP_MODEL_PREFIX: spmodel
+MODEL_TYPE: bpe
+#one of unigram, bpe, char, word
+VOCAB_SIZE: 8000
+CHARACTER_COVERAGE: 1.0
+CHARACTER_COVERAGE_SL: 1.0
+CHARACTER_COVERAGE_TL: 1.0
+INPUT_SENTENCE_SIZE: 100000
+
+#GUIDED ALIGNMENT
+#TRAIN CORPUS
+GUIDED_ALIGNMENT: False
+ALIGNER: eflomal
+#one of eflomal, fast_align, simalign, awesome
+DELETE_EXISTING: True
+SPLIT_LIMIT: 1000000
+#For efomal, max number of segments to align at a time
+
+#VALID CORPUS
+GUIDED_ALIGNMENT_VALID: False
+ALIGNER_VALID: eflomal
+#one of eflomal, fast_align, simalign, awesome
+DELETE_EXISTING_VALID: True
+
+VERBOSE: True
+LOG_FILE: process.log
+DELETE_TEMP: False
+
